@@ -1,5 +1,5 @@
 // src/pages/HandlersPage.tsx
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
