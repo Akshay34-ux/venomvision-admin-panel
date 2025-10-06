@@ -8,12 +8,15 @@ export default function AdminLogin() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // ✅ use environment variable
+  const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5001/api/admin/login", {
+      const res = await fetch(`${baseUrl}/api/admin/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -28,6 +31,7 @@ export default function AdminLogin() {
         setError("Invalid credentials ❌");
       }
     } catch (err) {
+      console.error("Login Error:", err);
       setError("Server error. Please try again.");
     }
   };
